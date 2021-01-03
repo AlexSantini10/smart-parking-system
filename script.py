@@ -8,7 +8,7 @@ mydb = mysql.connector.connect(
         user = "5ATL",
         passwd = "sistemi",
         database = "parcheggio"
-    )
+    ) 
 
 mycursor = mydb.cursor()
 

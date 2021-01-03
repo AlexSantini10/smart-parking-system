@@ -1,11 +1,5 @@
 <<!DOCTYPE html>
 
-<?php
-    $host='localhost';
-    $user='5ATL';
-    $pass='sistemi';
-    $db='parcheggio';
-?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,6 +7,7 @@
     <title>Parcheggio</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="./script.js"></script>
 </head>
 <body class="bg-dark">
     
@@ -25,17 +20,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-            <?php 
-                $myDB=new mysqli($host, $user, $pass, $db);
-                $query = "SELECT * FROM posti";
-
-                $RS = $myDB->query($query);
-                list($id, $postiTotali, $postiDisponibili) = $RS->fetch_array();
-            ?>
-            <a class="nav-link active" aria-current="page" href="#">Posti totali: <?php echo $postiTotali; ?></a>
+            <a class="nav-link active" aria-current="page" href="#" id="posti-tot">Posti totali: </a>
             </li>
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Posti disponibili: <?php echo $postiDisponibili; ?></a>
+            <a class="nav-link active" aria-current="page" href="#" id="posti-disp">Posti disponibili: </a>
             </li>
         </ul>
         </div>
@@ -50,23 +38,7 @@
         <th scope="col">Tempo</th>
         </tr>
     </thead>
-    <tbody>
-
-        <?php
-            $myDB=new mysqli($host, $user, $pass, $db);
-            $query = "SELECT * FROM log";
-
-            $RS = $myDB->query($query);
-
-            while($row_RS=$RS->fetch_assoc()){
-                ?> <tr> 
-                        <th> <?php echo $row_RS['ID']; ?> </th>
-                        <td> <?php echo $row_RS['entrataUscita'] ? 'Entrata' : 'Uscita'; ?> </td>
-                        <td> <?php echo $row_RS['tempo']; ?></td> 
-                    </tr>
-                <?php
-            }
-        ?>
+    <tbody id="table-body">
 
 
     </tbody>
