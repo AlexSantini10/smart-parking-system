@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
 
     // Log
-    
+    console.log('here');
     const table = document.getElementById('table-body');
 
     const relLog = async () => {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 tr.appendChild(entrataUscita);
 
                 let tempo = document.createElement('td');
-                tempo.innerHTML = '' + element.tempo;
+                tempo.innerHTML = '' + element.time;
                 tr.appendChild(tempo);
             });
 
