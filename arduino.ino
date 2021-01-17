@@ -47,8 +47,8 @@ void loop() {
     int uscita = lettura(uscitaPin);
     int apriChiudi = lettura(apriChiudiSbarra);
     
-    if (entrata && !lastEnt) ent=true;
-    if (uscita && !lastExt) ext=true;
+    if (entrata) ent=true;
+    if (uscita) ext=true;
     
     if (apriChiudi) {
       isOpen = !isOpen;
@@ -57,21 +57,21 @@ void loop() {
     
     if(isOpen) {
       
-      if(ent)
+      if(ent && !lastEnt)
         Println(1);
-      if(ext) 
+      if(ext && !lastExt) 
         Println(-1);
 
       accendiLed(greenLed);
       spegniLed(redLed);  
+
+      lastEnt = ent;
+      lastExt = ext;
     }
     else {
       accendiLed(redLed);
       spegniLed(greenLed);
     }
-
-    lastEnt = ent;
-    lastExt = ext;
   }
 
 
