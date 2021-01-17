@@ -37,7 +37,7 @@
         
         <div class="form-group">
             <label for="postiTot">Posti totali</label>
-            <input type="email" class="form-control" id="postiTot" name="postiTot">
+            <input type="text" class="form-control" id="postiTot" name="postiTot">
         </div>
         <input type="button" name="posButton" id="posButton" value="Submit">
     </form>

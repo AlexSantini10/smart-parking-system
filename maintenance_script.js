@@ -37,7 +37,7 @@ function postMaintenance() {
             var dbText = xhttp.responseText;
             var json = JSON.parse(dbText);
         
-            if(json.response==-1)
+            if(json.response==0)
                 alert('Errore, inserire un numero valido');
         }
     };
