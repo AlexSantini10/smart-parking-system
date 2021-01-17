@@ -34,13 +34,18 @@ while True:
             query = f"INSERT INTO log (entrataUscita) VALUES (1)"
             mycursor.execute(query)
             mydb.commit()   
-    elif read==-1:
+    if read==-1:
         query = f"SELECT postiDisponibili FROM posti"
         mycursor.execute(query)
         posti = mycursor.fetchall()
         posti = posti[0][0]
 
-        if posti<100:
+        query = f"SELECT postiTotali FROM posti"
+        mycursor.execute(query)
+        postiTot = mycursor.fetchall()
+        postiTot = postiTot[0][0]
+
+        if posti<postiTot:
             query = f"UPDATE posti SET postiDisponibili={posti+1}"
             mycursor.execute(query)
             mydb.commit()   
