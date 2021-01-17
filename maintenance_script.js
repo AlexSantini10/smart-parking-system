@@ -28,9 +28,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 function postMaintenance() {
     var val = '' + parseInt(document.getElementById('postiTot').value);
-    
+    document.getElementById('postiTot').value = '';
+
     var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200){
+            var dbText = xhttp.responseText;
+            var json = JSON.parse(dbText);
+        
+            if(json.response==-1)
+                alert('Errore, inserire un numero valido');
+        }
+    };
 
     xhttp.open("GET", "post_maintenance.php?pos=" + val, true);
     xhttp.send();
+    
 }
