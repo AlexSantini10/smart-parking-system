@@ -33,10 +33,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         .catch(err => console.log(err));
     };
 
-    relLog();
-    setInterval(relLog, 1000);
-
-
     // Posti
 
     const postiTotali = document.getElementById('posti-tot');
@@ -52,7 +48,27 @@ document.addEventListener('DOMContentLoaded', async () => {
         .catch(err => console.log(err));
     }
 
-    relPosti();    
-    setInterval(relPosti, 1000);
+    const setUpdated = async () => {
+        fetch('./set_updated.php', {method:'GET'})
+        .catch(err => console.log(err));
+    }
+
+    const checkForUpdate = async () => {
+        fetch('./get_update.php', {method:'GET'})
+        .then(res => res.json())
+        .then(json => {
+            if(json[0].isToUpdate==1){
+                relPosti();
+                relLog();
+                setUpdated();
+            }
+        })
+        .catch(err => console.log(err));
+    }
+   
+    relLog();
+    relPosti();
+    setUpdated();
+    setInterval(checkForUpdate, 1000);
 
 });

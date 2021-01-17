@@ -33,13 +33,13 @@
     </div>
     </nav>
 
-    <form method="POST" style="width: 50%;">
+    <form method="POST" style="width: 10%; margin-left:10px;">
         
         <div class="form-group">
             <label for="postiTot">Posti totali</label>
-            <input type="text" class="form-control" id="postiTot" name="postiTot">
+            <input type="text" class="form-control bg-dark text-white" id="postiTot" name="postiTot">
         </div>
-        <input type="button" name="posButton" id="posButton" value="Submit">
+        <input type="button" name="posButton" id="posButton" value="Submit" class="btn btn-primary" style="margin-top: 10px;">
     </form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     });
 
-});
+}); 
 
 function postMaintenance() {
     var val = '' + parseInt(document.getElementById('postiTot').value);

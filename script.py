@@ -20,7 +20,7 @@ while True:
     read = read_ser.decode('utf-8')
     read = read.strip()
 
-    if read==1:
+    if read=='1':
         query = f"SELECT postiDisponibili FROM posti"
         mycursor.execute(query)
         posti = mycursor.fetchall()
@@ -33,8 +33,12 @@ while True:
 
             query = f"INSERT INTO log (entrataUscita) VALUES (1)"
             mycursor.execute(query)
+            mydb.commit()  
+
+            query = f"UPDATE toUpdate SET isToUpdate=1"
+            mycursor.execute(query)
             mydb.commit()   
-    if read==-1:
+    if read=='-1':
         query = f"SELECT postiDisponibili FROM posti"
         mycursor.execute(query)
         posti = mycursor.fetchall()
@@ -53,3 +57,7 @@ while True:
             query = f"INSERT INTO log (entrataUscita) VALUES (0)"
             mycursor.execute(query)
             mydb.commit()
+
+            query = f"UPDATE toUpdate SET isToUpdate=1"
+            mycursor.execute(query)
+            mydb.commit() 

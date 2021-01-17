@@ -7,7 +7,7 @@
 void accendiLed(int led) {
   digitalWrite(led, HIGH);
 }
-
+ 
 void spegniLed(int led) {
   digitalWrite(led, LOW);
 }
