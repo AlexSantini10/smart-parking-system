@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const postiDisponibili = document.getElementById('posti-disp');
 
     const relPosti = async () => {
-        fetch('./get_posti.php', {method:'GET'})
+        fetch('/api/parcheggio/posti', {method:'GET'})
         .then(res => res.json())
         .then(json => {
             postiTotali.innerHTML = 'Posti totali: ' + json.postiTotali;
@@ -30,19 +30,24 @@ function postMaintenance() {
     var val = '' + parseInt(document.getElementById('postiTot').value);
     document.getElementById('postiTot').value = '';
 
-    var xhttp = new XMLHttpRequest();
+    if (!isNaN(val) && val>=0){
+        fetch("/api/parcheggio/postMaintenance/" + val, {method:'GET'})
+        .then(res => res.json())
+        .then(json => {
+            console.log(json);
+        })
+        .catch(err => console.log(err));
+    }
+    else{
+        alert('Inserire un valore numerico valido');
+    }
 
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200){
-            var dbText = xhttp.responseText;
-            var json = JSON.parse(dbText);
-        
-            if(json.response==0)
-                alert('Errore, inserire un numero valido');
-        }
-    };
-
-    xhttp.open("GET", "post_maintenance.php?pos=" + val, true);
-    xhttp.send();
+    /*fetch("/api/parcheggio/postMaintenance/" + val, {method:'GET'})
+    .then(res => res.json())
+    .then(json => {
+        console.log(json);
+    })
+    .catch(err => console.log(err));*/
+    
     
 }

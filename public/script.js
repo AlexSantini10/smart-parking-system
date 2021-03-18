@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const table = document.getElementById('table-body');
 
     const relLog = async () => {
-        fetch('./get_log.php', { method: 'GET' })
+        fetch('/api/parcheggio/log', { method: 'GET' })
         .then(res => res.json())
         .then(json => {
 
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const postiDisponibili = document.getElementById('posti-disp');
 
     const relPosti = async () => {
-        fetch('./get_posti.php', {method:'GET'})
+        fetch('/api/parcheggio/posti', {method:'GET'})
         .then(res => res.json())
         .then(json => {
             postiTotali.innerHTML = 'Posti totali: ' + json.postiTotali;
@@ -49,15 +49,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const setUpdated = async () => {
-        fetch('./set_updated.php', {method:'GET'})
+        fetch('/api/parcheggio/setUpdated', {method:'GET'})
         .catch(err => console.log(err));
     }
 
     const checkForUpdate = async () => {
-        fetch('./get_update.php', {method:'GET'})
+        fetch('/api/parcheggio/toUpdate', {method:'GET'})
         .then(res => res.json())
         .then(json => {
-            if(json[0].isToUpdate==1){
+            if(json.isToUpdate==1){
+                console.log('da aggiornare');
                 relPosti();
                 relLog();
                 setUpdated();
