@@ -12,7 +12,7 @@ var con = mysql.createConnection({
 });
 
 router.get('/posti', (req, res) => {
-    con.query("SELECT * FROM posti WHERE 1", function (err, result) {
+    con.query("SELECT * FROM posti WHERE 1", (err, result) => {
         if (err) throw err;
 
         res.json(result[0]);
@@ -20,7 +20,7 @@ router.get('/posti', (req, res) => {
 });
 
 router.get('/log', (req, res) => {
-    con.query("SELECT * FROM log WHERE 1", function (err, result) {
+    con.query("SELECT * FROM log WHERE 1", (err, result) => {
         if (err) throw err;
 
         res.json(result);
@@ -28,7 +28,7 @@ router.get('/log', (req, res) => {
 });
 
 router.get('/toUpdate', (req, res) => {
-    con.query("SELECT * FROM toUpdate WHERE 1", function (err, result) {
+    con.query("SELECT * FROM toUpdate WHERE 1", (err, result) => {
         if (err) throw err;
 
         res.json(result[0]);
