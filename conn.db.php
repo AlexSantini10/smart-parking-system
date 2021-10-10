@@ -1,6 +1,6 @@
 <?php
     $host='localhost';
-    $user='5ATL';
-    $pass='sistemi';
+    $user='';
+    $pass='';
     $db='parcheggio';
 ?> 
