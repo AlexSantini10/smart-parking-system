@@ -1,5 +1,5 @@
 <?php
-    $host='localhost';
+    $host='root';
     $user='';
     $pass='';
     $db='parcheggio';
