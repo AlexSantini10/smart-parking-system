@@ -22,23 +22,34 @@ void Println(int text){
 
 void setup() {
   
+  // Setup serial monitor
   Serial.begin(9600);
   
-  pinMode(entrataPin, INPUT); /// Cavo rosso
-  pinMode(uscitaPin, INPUT); /// Cavo verde
+  // Setup pin
+  pinMode(entrataPin, INPUT); // Cavo rosso
+  pinMode(uscitaPin, INPUT); // Cavo verde
   pinMode(redLed, OUTPUT);
   pinMode(greenLed, OUTPUT);
   
+  // Reset led
   digitalWrite(redLed, LOW);
   digitalWrite(greenLed, LOW);
 }
 
+// Delay in millisecondi
 #define timeDelay 500
+
+// Prossimo tempo di esecuzione
 unsigned long long next = timeDelay;
+
+// Stato della sbarra (Aperta: conta entrate/uscite, Chiusa: non conta)
 bool isOpen=false;
+
+// Stato dell'ultimo ciclo per evitare di contare più volte lo stesso evento
 bool lastEnt=false, lastExt=false;
 
 void loop() {
+  // Delay
   if(millis()>=next) {
     bool ent=false, ext=false;
     
@@ -46,7 +57,8 @@ void loop() {
     int entrata = lettura(entrataPin);
     int uscita = lettura(uscitaPin);
     int apriChiudi = lettura(apriChiudiSbarra);
-    
+
+    // Verifica se sta entrando o uscendo qualcuno
     if (entrata) ent=true;
     if (uscita) ext=true;
     
@@ -54,7 +66,7 @@ void loop() {
       isOpen = !isOpen;
     }
     
-    
+    // Se la sbarra è aperta, conto le entrate e le uscite
     if(isOpen) {
       
       if(ent && !lastEnt)
