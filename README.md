@@ -1,4 +1,4 @@
-# Parcheggio 🚗
+# Smart Parking System 🚗
 
 Sistema di gestione parcheggio sviluppato come progetto scolastico per i corsi di **Sistemi e Reti** e **TPSIT** (Tecnologie e Progettazione di Sistemi Informatici e di Telecomunicazioni).
 
